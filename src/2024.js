@@ -15,5 +15,32 @@ if (!Promise.withResolvers) {
   )
 }
 
-// {Object,Map}.groupBy
-// @todo
+if (!Object.groupBy) {
+  define(Object, "groupBy",
+    function groupBy(array, callback) {
+      const obj = {}
+      let index = 0
+      for (const entry of array) {
+        const key = callback(entry, index++);
+        (obj[key] ??= []).push(entry);
+      }
+      return obj
+    }
+  )
+}
+
+if (!Map.groupBy) {
+  define(Map, "groupBy",
+    function groupBy(array, callback) {
+      const map = new Map;
+      let index = 0
+      for (const entry of array) {
+        const key = callback(entry, index++);
+        let entries = map.get(key);
+        if (!entries) { map.set(key, entries = []); }
+        entries.push(entry);
+      }
+      return map
+    }
+  )
+}

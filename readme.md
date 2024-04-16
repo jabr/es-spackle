@@ -1,8 +1,43 @@
-# Polyfills for EcmaScript 2018+
+# Light-weight polyfills for EcmaScript 2018+
 
-## ES2022
-- Object.hasOwn
-## ES2024
-- Object.withResolvers
-## ESNext
-- Promise.try
+* _ES2018_
+  - _Promise.prototype.finally_
+* ES2019
+  - Array.prototype.flat
+  - _Array.prototype.flatMap_
+  - Object.fromEntries
+  - String.prototype.trimStart
+  - String.prototype.trimEnd
+* _ES2020_
+  - _Promise.allSettled_
+  - _String.prototype.matchAll_
+* _ES2021_
+  - _Promise.any_
+  - _String.prototype.replaceAll_
+* ES2022
+  - Object.hasOwn
+  - String.prototype.at
+  - Array.prototype.at
+  - %TypedArray%.prototype.at
+* _ES2023_
+  - _Array.prototype.findLast_
+  - _Array.prototype.findLastIndex_
+* ES2024
+  - Promise.withResolvers
+  - Object.groupBy
+  - Map.groupBy
+* _ES2025_
+  - _Set.prototype.intersection_
+  - _Set.prototype.union_
+  - _Set.prototype.difference_
+  - _Set.prototype.symmetricDifference_
+  - _Set.prototype.isSubsetOf_
+  - _Set.prototype.isSupersetOf_
+  - _Set.prototype.isDisjointFrom_
+* ESNext
+  - Promise.try
+  - _Iterator.range_
+  - _Uint8Array.fromBase64_
+  - _Uint8Array.fromHex_
+  - _Uint8Array.prototype.toBase64_
+  - _Uint8Array.prototype.toHex_

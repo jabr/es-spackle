@@ -1,18 +1,27 @@
-import { describe, it } from "https://deno.land/std/testing/bdd.ts"
-import { expect } from "https://deno.land/std/expect/mod.ts"
+import { describe, it, expect } from "./tests.js"
 
-console.log(Promise, Promise.try)
 delete Promise.try
-console.log(Promise, Promise.try)
 await import("./next.js")
-console.log(Promise, Promise.try)
 
 describe('Promise.try', () => {
-  it('returns a resolved promise with return value of the passed function', async () => {
-    const f = () => 42
-    const p = Promise.try(f)
-    expect(p).toBeInstanceOf(Promise)
-    console.log(p)
-    expect(await p).toBe(42)
+  it('returns a promise', () => {
+    expect(Promise.try(() => null)).toBeInstanceOf(Promise)
+  })
+
+  describe('with a function returning a value', () => {
+    it('returns a resolved promise with that value', async () => {
+      const p = Promise.try(() => 42)
+      expect(await p).toBe(42)
+    })
+  })
+
+  describe('with a function returning a promise', () => {
+    it('returns that pending promise', async () => {
+      const { promise, resolve } = Promise.withResolvers()
+      const p = Promise.try(() => promise)
+      p.then((v) => expect(v).toBe(42))
+      resolve(42)
+      await p
+    })
   })
 })

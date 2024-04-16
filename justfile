@@ -1,2 +1,2 @@
-test:
-  deno test
+test args='':
+  deno test {{args}}
