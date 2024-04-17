@@ -19,9 +19,11 @@
   - String.prototype.at
   - Array.prototype.at
   - %TypedArray%.prototype.at
-* _ES2023_
-  - _Array.prototype.findLast_
-  - _Array.prototype.findLastIndex_
+* ES2023
+  - Array.prototype.findLast
+  - Array.prototype.findLastIndex
+  - %TypedArray%.prototype.findLast
+  - %TypedArray%.prototype.findLastIndex
 * ES2024
   - Promise.withResolvers
   - Object.groupBy
@@ -36,8 +38,18 @@
   - _Set.prototype.isDisjointFrom_
 * ESNext
   - Promise.try
-  - _Iterator.range_
-  - _Uint8Array.fromBase64_
-  - _Uint8Array.fromHex_
-  - _Uint8Array.prototype.toBase64_
-  - _Uint8Array.prototype.toHex_
+  - Iterator.range [^1]
+  - Uint8Array.fromBase64 [^2]
+  - Uint8Array.fromHex
+  - Uint8Array.prototype.toBase64 [^2]
+  - Uint8Array.prototype.toHex
+
+## Notes
+
+- Italicized functions are not yet implemented.
+[^1]: Options parameter and inclusive setting are not yet implemented.
+[^2]: Options for base64 alphabet and overflow handling are not yet implemented.
+
+## License
+
+This project is licensed under the terms of the [MIT license](LICENSE.txt).
