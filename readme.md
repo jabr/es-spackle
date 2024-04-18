@@ -8,11 +8,11 @@
   - Object.fromEntries
   - String.prototype.trimStart
   - String.prototype.trimEnd
-* _ES2020_
-  - _Promise.allSettled_
+* ES2020
+  - Promise.allSettled
   - _String.prototype.matchAll_
-* _ES2021_
-  - _Promise.any_
+* ES2021
+  - Promise.any [^aggerror]
   - _String.prototype.replaceAll_
 * ES2022
   - Object.hasOwn
@@ -38,17 +38,16 @@
   - _Set.prototype.isDisjointFrom_
 * ESNext
   - Promise.try
-  - Iterator.range [^1]
-  - Uint8Array.fromBase64 [^2]
+  - Iterator.range [^range]
+  - Uint8Array.fromBase64 [^base64]
   - Uint8Array.fromHex
-  - Uint8Array.prototype.toBase64 [^2]
+  - Uint8Array.prototype.toBase64 [^base64]
   - Uint8Array.prototype.toHex
 
-## Notes
-
-- Italicized functions are not yet implemented.
-[^1]: Options parameter and inclusive setting are not yet implemented.
-[^2]: Options for base64 alphabet and overflow handling are not yet implemented.
+_Italicized functions are not yet implemented._
+[^range]: Options parameter and inclusive setting are not yet implemented.
+[^base64]: Options for base64 alphabet and overflow handling are not yet implemented.
+[^aggerror]: Throws an Error (not an AggregateError) but it has the aggregate errors property.
 
 ## License
 
