@@ -1,7 +1,7 @@
 # Light-weight polyfills for EcmaScript 2018+
 
-* _ES2018_
-  - _Promise.prototype.finally_
+* ES2018
+  - Promise.prototype.finally
 * ES2019
   - Array.prototype.flat
   - _Array.prototype.flatMap_
