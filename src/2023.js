@@ -14,10 +14,6 @@ function findLast(callback, callbackThis) {
 }
 
 for (const klass of [ Array, ...typedArrays ]) {
-  if (!klass.prototype.findLastIndex) {
-    define(klass.prototype, "findLastIndex", findLastIndex);
-  }
-  if (!klass.prototype.findLast) {
-    define(klass.prototype, "findLast", findLast);
-  }
+  define(klass.prototype, "findLastIndex", findLastIndex);
+  define(klass.prototype, "findLast", findLast);
 }

@@ -6,19 +6,17 @@ function reversePromise(promise) {
   );
 }
 
-if (!Promise.any) {
-  define(Promise, "any",
-    function any(promises) {
-      return reversePromise(
-        Promise.all([...promises].map(reversePromise))
-      ).catch(errors => {
-        const error = new Error('All promises were rejected');
-        error.errors = errors;
-        throw error;
-      });
-    }
-  );
-}
+define(Promise, "any",
+  function any(promises) {
+    return reversePromise(
+      Promise.all([...promises].map(reversePromise))
+    ).catch(errors => {
+      const error = new Error('All promises were rejected');
+      error.errors = errors;
+      throw error;
+    });
+  }
+);
 
 // String.prototype.replaceAll
 // @todo

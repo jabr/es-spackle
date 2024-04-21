@@ -1,10 +1,12 @@
 export function define(object, property, implementation) {
-  Object.defineProperty(object, property, {
-    value: implementation,
-    configurable: true,
-    enumerable: false,
-    writable: true
-  });
+  if (!object[property]) {
+    Object.defineProperty(object, property, {
+      value: implementation,
+      configurable: true,
+      enumerable: false,
+      writable: true
+    });
+  }
 }
 
 export const typedArrays = [
@@ -17,7 +19,7 @@ export const typedArrays = [
   Uint32Array,
   Float32Array,
   Float64Array,
-  // @todo?
+  // @todo: need to check if BigInt arrays exists as they were added in ES2020
   // BigInt64Array,
   // BigUint64Array,
 ];

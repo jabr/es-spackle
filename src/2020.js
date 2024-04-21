@@ -7,13 +7,11 @@ function wrapPromise(promise) {
   );
 }
 
-if (!Promise.allSettled) {
-  define(Promise, "allSettled",
-    function allSettled(promises) {
-      return Promise.all([...promises].map(wrapPromise));
-    }
-  )
-}
+define(Promise, "allSettled",
+  function allSettled(promises) {
+    return Promise.all([...promises].map(wrapPromise));
+  }
+);
 
 // String.prototype.matchAll
 // @todo
