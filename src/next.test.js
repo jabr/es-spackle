@@ -90,3 +90,14 @@ describe('Uint8Array', () => {
     })
   })
 })
+
+describe('RegExp.escape', () => {
+  it('escapes regex characters in a string', () => {
+    expect(RegExp.escape((/\w+/).toString())).toBe('/\\\\w\\+/')
+    expect(
+      RegExp.escape((/^foo\..*?\.bar\[[0-5]\}(ab|cd)$/g).toString())
+    ).toBe(
+      '/\\^foo\\\\\\.\\.\\*\\?\\\\\\.bar\\\\\\[\\[0-5\\]\\\\\\}\\(ab\\|cd\\)\\$/g'
+    )
+  })
+})

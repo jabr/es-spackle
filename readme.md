@@ -43,6 +43,7 @@
   - Uint8Array.fromHex
   - Uint8Array.prototype.toBase64 [^base64]
   - Uint8Array.prototype.toHex
+  - RegExp.escape
 
 _Italicized functions are not yet implemented._
 [^range]: Options parameter and inclusive setting are not yet implemented.
