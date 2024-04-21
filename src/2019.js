@@ -14,7 +14,14 @@ if (!Array.prototype.flat) {
     }
   );
 }
-// @todo: Array.prototype.flatMap
+
+if (!Array.prototype.flatMap) {
+  define(Array.prototype, "flatMap",
+    function flatMap(callback) {
+      return this.map(callback).flat();
+    }
+  );
+}
 
 if (!Object.fromEntries) {
   define(Object, "fromEntries",

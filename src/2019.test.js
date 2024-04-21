@@ -1,50 +1,80 @@
 import { describe, it, expect } from "./tests.js"
 
 delete Array.prototype.flat
+delete Array.prototype.flatMap
 delete Object.fromEntries
 delete String.prototype.trimStart
 delete String.prototype.trimEnd
 await import("./2019.js")
 
-describe('Array.prototype.flat', () => {
-  describe('with a flat array', () => {
-    it('returns the array', () => {
-      expect(['a', 'b', 'c'].flat()).toStrictEqual(['a', 'b', 'c'])
-    })
-  })
-
-  describe('with a nested array', () => {
-    it('returns a flattened array', () => {
-      expect(['a', ['b1', 'b2'] , 'c'].flat()).toStrictEqual(['a', 'b1', 'b2', 'c'])
-    })
-  })
-
-  describe('with a deeply nested array', () => {
-    const array = ['a', ['b1', 'b2'], ['c1', ['c2a', 'c2b']]]
-
-    describe('and no depth specified', () => {
-      it('returns an array flatten one level', () => {
-        expect(array.flat()).toStrictEqual([
-          'a',
-          'b1',
-          'b2',
-          'c1',
-          ['c2a', 'c2b']
-        ])
+describe('Array.prototype', () => {
+  describe('.flat', () => {
+    describe('with a flat array', () => {
+      it('returns the array', () => {
+        expect(['a', 'b', 'c'].flat()).toStrictEqual(['a', 'b', 'c'])
       })
     })
 
-    describe('and a large depth specified', () => {
-      it('returns a completely flattened array', () => {
-        expect(array.flat(10)).toStrictEqual([
-          'a',
-          'b1',
-          'b2',
-          'c1',
-          'c2a',
-          'c2b',
-        ])
+    describe('with a nested array', () => {
+      it('returns a flattened array', () => {
+        expect(['a', ['b1', 'b2'] , 'c'].flat()).toStrictEqual(['a', 'b1', 'b2', 'c'])
       })
+    })
+
+    describe('with a deeply nested array', () => {
+      const array = ['a', ['b1', 'b2'], ['c1', ['c2a', 'c2b']]]
+
+      describe('and no depth specified', () => {
+        it('returns an array flatten one level', () => {
+          expect(array.flat()).toStrictEqual([
+            'a',
+            'b1',
+            'b2',
+            'c1',
+            ['c2a', 'c2b']
+          ])
+        })
+      })
+
+      describe('and a large depth specified', () => {
+        it('returns a completely flattened array', () => {
+          expect(array.flat(10)).toStrictEqual([
+            'a',
+            'b1',
+            'b2',
+            'c1',
+            'c2a',
+            'c2b',
+          ])
+        })
+      })
+    })
+  })
+
+  describe('.flatMap', () => {
+    const array = ['a', 'b-c-d', 'e-f']
+
+    it('returns an empty array for an empty array', () => {
+      expect([].flatMap(e => [])).toStrictEqual([])
+    })
+
+    it('maps the array with the given function then flattens the result', () => {
+      expect(
+        array.flatMap(e => e.split('-'))
+      ).toStrictEqual(
+        ['a', 'b', 'c', 'd', 'e', 'f']
+      )
+    })
+
+    it('only flattens the mapped values one level', () => {
+      expect(
+        array.flatMap(e => {
+          const [f, ...r] = e.split('-')
+          return [f, r]
+        })
+      ).toStrictEqual(
+        ['a', [], 'b', ['c', 'd'], 'e', ['f']]
+      )
     })
   })
 })

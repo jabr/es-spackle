@@ -4,7 +4,7 @@
   - Promise.prototype.finally
 * ES2019
   - Array.prototype.flat
-  - _Array.prototype.flatMap_
+  - Array.prototype.flatMap
   - Object.fromEntries
   - String.prototype.trimStart
   - String.prototype.trimEnd
@@ -29,13 +29,13 @@
   - Object.groupBy
   - Map.groupBy
 * _ES2025_
-  - _Set.prototype.intersection_
-  - _Set.prototype.union_
-  - _Set.prototype.difference_
-  - _Set.prototype.symmetricDifference_
-  - _Set.prototype.isSubsetOf_
-  - _Set.prototype.isSupersetOf_
-  - _Set.prototype.isDisjointFrom_
+  - Set.prototype.intersection
+  - Set.prototype.union
+  - Set.prototype.difference
+  - Set.prototype.symmetricDifference
+  - Set.prototype.isSubsetOf
+  - Set.prototype.isSupersetOf
+  - Set.prototype.isDisjointFrom
 * ESNext
   - Promise.try
   - Iterator.range [^range]
