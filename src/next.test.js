@@ -6,6 +6,7 @@ Uint8Array.prototype.toBase64 = undefined
 Uint8Array.prototype.toHex = undefined
 Uint8Array.fromBase64 = undefined
 Uint8Array.fromHex = undefined
+delete RegExp.escape
 await import("./next.js")
 
 describe('Promise.try', () => {
