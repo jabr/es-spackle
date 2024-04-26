@@ -13,7 +13,7 @@
   - _String.prototype.matchAll_
 * ES2021
   - Promise.any [^aggerror]
-  - _String.prototype.replaceAll_
+  - String.prototype.replaceAll
 * ES2022
   - Object.hasOwn
   - String.prototype.at

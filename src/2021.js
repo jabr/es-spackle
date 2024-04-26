@@ -18,5 +18,15 @@ define(Promise, "any",
   }
 );
 
-// String.prototype.replaceAll
-// @todo
+import { regExpEscape } from './next.js';
+define(String.prototype, "replaceAll",
+  function replaceAll(pattern, replacement) {
+    if (pattern instanceof RegExp) {
+      if (!pattern.flags.includes("g")) {
+        throw new TypeError("non-global RegExp");
+      }
+      return this.replace(pattern, replacement);
+    }
+    return this.replace(new RegExp(regExpEscape(pattern), "g"), replacement);
+  }
+);

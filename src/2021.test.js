@@ -1,6 +1,7 @@
-import { describe, it, expect, assertRejects } from "./tests.js"
+import { describe, it, expect, assertRejects, assertThrows } from "./tests.js"
 
 delete Promise.any
+delete String.prototype.replaceAll
 await import('./2021.js')
 
 describe('Promise.any', () => {
@@ -48,6 +49,32 @@ describe('Promise.any', () => {
       b.reject(new Error('fail 2!'))
       c.reject(new Error('fail 3!'))
       assertRejects(() => p)
+    })
+  })
+})
+
+describe('String.prototype.replaceAll', () => {
+  describe('with a simple string', () => {
+    it('replaces all instances of the string', () => {
+      expect("a-a-a".replaceAll('a', 'b')).toBe("b-b-b")
+    })
+  })
+
+  describe('with a string containing regexp characters', () => {
+    it('replaces all instances of the string (not as a regexp', () => {
+      expect("a-b-.*-.*".replaceAll('.*', 'x')).toBe('a-b-x-x')
+    })
+  })
+
+  describe('with a regexp', () => {
+    describe('without global flag', () => {
+      assertThrows(() => {
+        "a-b-c".replaceAll(/./, 'x')
+      }, TypeError, 'non-global RegExp')
+    })
+
+    describe('with global flag', () => {
+      expect("a-b-c".replaceAll(/./g, 'x')).toBe('xxxxx')
     })
   })
 })
