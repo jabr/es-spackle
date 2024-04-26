@@ -22,7 +22,7 @@ import { regExpEscape } from './next.js';
 define(String.prototype, "replaceAll",
   function replaceAll(pattern, replacement) {
     if (pattern instanceof RegExp) {
-      if (!pattern.flags.includes("g")) {
+      if (!pattern.global) {
         throw new TypeError("non-global RegExp");
       }
       return this.replace(pattern, replacement);

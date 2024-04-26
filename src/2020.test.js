@@ -1,6 +1,7 @@
-import { describe, it, expect } from "./tests.js"
+import { describe, it, expect, assertThrows } from "./tests.js"
 
 delete Promise.allSettled
+delete String.prototype.matchAll
 await import('./2020.js')
 
 describe('Promise.allSettled', () => {
@@ -36,6 +37,36 @@ describe('Promise.allSettled', () => {
         expect(states[1]).toStrictEqual({status: 'fulfilled', value: 'xx'})
       })
       await p
+    })
+  })
+})
+
+describe('String.prototype.matchAll', () => {
+  const str = "test1test2"
+
+  describe('with a simple string', () => {
+    it('is converted to a global regexp', () => {
+      const matches = [...str.matchAll('te.t')]
+      expect(Array.from(matches[0])).toStrictEqual(["test"])
+      expect(matches[0].index).toBe(0)
+      expect(Array.from(matches[1])).toStrictEqual(["test"])
+      expect(matches[1].index).toBe(5)
+    })
+  })
+
+  describe('with a regexp', () => {
+    describe('without global flag', () => {
+      assertThrows(() => {
+        str.matchAll(/./, 'x')
+      }, TypeError, 'non-global RegExp')
+    })
+
+    describe('with global flag', () => {
+      const matches = [...str.matchAll(/t(e)(st(\d?))/g)]
+      expect(Array.from(matches[0])).toStrictEqual(["test1", "e", "st1", "1"])
+      expect(matches[0].index).toBe(0)
+      expect(Array.from(matches[1])).toStrictEqual(["test2", "e", "st2", "2"])
+      expect(matches[1].index).toBe(5)
     })
   })
 })

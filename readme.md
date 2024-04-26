@@ -10,7 +10,7 @@
   - String.prototype.trimEnd
 * ES2020
   - Promise.allSettled
-  - _String.prototype.matchAll_
+  - String.prototype.matchAll [^matchall]
 * ES2021
   - Promise.any [^aggerror]
   - String.prototype.replaceAll
@@ -28,7 +28,7 @@
   - Promise.withResolvers
   - Object.groupBy
   - Map.groupBy
-* _ES2025_
+* ES2025
   - Set.prototype.intersection
   - Set.prototype.union
   - Set.prototype.difference
@@ -45,7 +45,7 @@
   - Uint8Array.prototype.toHex
   - RegExp.escape
 
-_Italicized functions are not yet implemented._
+[^matchall]: Returns an array as an iterable.
 [^range]: Options parameter and inclusive setting are not yet implemented.
 [^base64]: Options for base64 alphabet and overflow handling are not yet implemented.
 [^aggerror]: Throws an Error (not an AggregateError) but it has the aggregate errors property.

@@ -13,5 +13,16 @@ define(Promise, "allSettled",
   }
 );
 
-// String.prototype.matchAll
-// @todo
+define(String.prototype, "matchAll",
+  function matchAll(pattern) {
+    if (pattern instanceof RegExp && !pattern.global) {
+      throw new TypeError("non-global RegExp");
+    }
+
+    const regexp = new RegExp(pattern, "g");
+    const matches = [];
+    let match;
+    while ((match = regexp.exec(this))) matches.push(match);
+    return matches;
+  }
+);
