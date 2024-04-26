@@ -18,12 +18,12 @@
   - Object.hasOwn
   - String.prototype.at
   - Array.prototype.at
-  - %TypedArray%.prototype.at
+  - %TypedArray%.prototype.at [^bigint]
 * ES2023
   - Array.prototype.findLast
   - Array.prototype.findLastIndex
-  - %TypedArray%.prototype.findLast
-  - %TypedArray%.prototype.findLastIndex
+  - %TypedArray%.prototype.findLast [^bigint]
+  - %TypedArray%.prototype.findLastIndex [^bigint]
 * ES2024
   - Promise.withResolvers
   - Object.groupBy
@@ -49,6 +49,7 @@
 [^range]: Options parameter and inclusive setting are not yet implemented.
 [^base64]: Options for base64 alphabet and overflow handling are not yet implemented.
 [^aggerror]: Throws an Error (not an AggregateError) but it has the aggregate errors property.
+[^bigint]: Polyfills are not yet supported on BigInt typed arrays.
 
 ## License
 
