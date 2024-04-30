@@ -1,4 +1,4 @@
-import { define } from "./utils.js";
+import { define, global } from "./utils.js";
 
 // https://github.com/tc39/proposal-promise-try
 define(Promise, "try",
@@ -8,7 +8,10 @@ define(Promise, "try",
 );
 
 // https://github.com/tc39/proposal-iterator.range
-if (!Iterator) globalThis.Iterator = {};
+if (typeof Iterator === 'undefined') {
+  global().Iterator = {};
+}
+
 define(Iterator, "range",
   // @todo: support "inclusive" option
   function *range(start, end = undefined, step = 1) {

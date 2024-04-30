@@ -4,6 +4,12 @@ delete Promise.allSettled
 delete String.prototype.matchAll
 await import('./2020.js')
 
+describe('globalThis', () => {
+  it('is defined', () => {
+    expect(typeof globalThis).toBe('object');
+  })
+})
+
 describe('Promise.allSettled', () => {
   describe('with an empty iterable', () => {
     it('resolves with an empty array', async () => {

@@ -1,7 +1,7 @@
 import { describe, it, expect } from "./tests.js"
 
 delete Promise.try
-delete Iterator.range
+delete globalThis.Iterator
 Uint8Array.prototype.toBase64 = undefined
 Uint8Array.prototype.toHex = undefined
 Uint8Array.fromBase64 = undefined

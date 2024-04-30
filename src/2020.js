@@ -1,4 +1,6 @@
-import { define } from "./utils.js";
+import { define, global } from "./utils.js";
+
+global(); // define `globalThis` if not already
 
 function wrapPromise(promise) {
   return Promise.resolve(promise).then(

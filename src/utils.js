@@ -9,6 +9,15 @@ export function define(object, property, implementation) {
   }
 }
 
+export function global() {
+  if (typeof globalThis === 'undefined') {
+    if (typeof window !== 'undefined') {
+      window.globalThis = window;
+    }
+  }
+  return globalThis;
+}
+
 export const typedArrays = [
   Int8Array,
   Uint8Array,

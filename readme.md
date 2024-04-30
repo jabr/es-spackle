@@ -9,6 +9,7 @@
   - String.prototype.trimStart
   - String.prototype.trimEnd
 * ES2020
+  - globalThis [^browser]
   - Promise.allSettled
   - String.prototype.matchAll [^matchall]
 * ES2021
@@ -45,6 +46,7 @@
   - Uint8Array.prototype.toHex
   - RegExp.escape
 
+[^browser]: Only polyfills for browser environments.
 [^matchall]: Returns an array as an iterable.
 [^range]: Options parameter and inclusive setting are not yet implemented.
 [^base64]: Options for base64 alphabet and overflow handling are not yet implemented.
