@@ -1,12 +1,5 @@
 import { define, global } from "./utils.js";
 
-// https://github.com/tc39/proposal-promise-try
-define(Promise, "try",
-  function tryImpl(func) {
-    return new Promise(resolve => resolve(func()));
-  }
-);
-
 // https://github.com/tc39/proposal-iterator.range
 if (typeof Iterator === 'undefined') {
   global().Iterator = {};

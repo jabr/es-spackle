@@ -42,3 +42,9 @@ define(Set.prototype, "isDisjointFrom",
     return ![...this].some(e => other.has(e));
   }
 );
+
+define(Promise, "try",
+  function tryImpl(func) {
+    return new Promise(resolve => resolve(func()));
+  }
+);

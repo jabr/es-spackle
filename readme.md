@@ -37,8 +37,8 @@
   - Set.prototype.isSubsetOf
   - Set.prototype.isSupersetOf
   - Set.prototype.isDisjointFrom
-* ESNext
   - Promise.try
+* ESNext
   - Iterator.range [^range]
   - Uint8Array.fromBase64 [^base64]
   - Uint8Array.fromHex
