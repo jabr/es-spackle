@@ -8,7 +8,6 @@ define(Promise, "withResolvers",
       resolve = res;
       reject = rej;
     })
-    console.log('custom wrt')
     return { promise, resolve, reject };
   }
 );
