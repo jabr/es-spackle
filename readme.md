@@ -25,6 +25,13 @@
   - Array.prototype.findLastIndex
   - %TypedArray%.prototype.findLast [^bigint]
   - %TypedArray%.prototype.findLastIndex [^bigint]
+  - Array.prototype.toReversed
+  - Array.prototype.toSorted
+  - Array.prototype.toSpliced
+  - Array.prototype.with
+  - %TypedArray%.prototype.toReversed [^bigint]
+  - %TypedArray%.prototype.toSorted [^bigint]
+  - %TypedArray%.prototype.with [^bigint]
 * ES2024
   - Promise.withResolvers
   - Object.groupBy
