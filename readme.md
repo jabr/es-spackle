@@ -60,6 +60,16 @@
 [^aggerror]: Throws an Error (not an AggregateError) but it has the aggregate errors property.
 [^bigint]: Polyfills are not yet supported on BigInt typed arrays.
 
+## Build
+
+Run `just dist` to create `dist/all.js` _(currently 4.3k uncompressed)_. It requires [esbuild](https://esbuild.github.io/) and also generates the sourcemap at `dist/all.js.map`.
+
+If you don't have [just](https://just.systems/man/en/packages.html) installed, the `esbuild` command is:
+
+```
+esbuild --target=es2017 --bundle --minify --sourcemap --outdir=./dist/ ./src/all.js
+```
+
 ## License
 
 This project is licensed under the terms of the [MIT license](LICENSE.txt).
