@@ -5,6 +5,7 @@ Uint8Array.prototype.toBase64 = undefined
 Uint8Array.prototype.toHex = undefined
 Uint8Array.fromBase64 = undefined
 Uint8Array.fromHex = undefined
+delete Math.clamp
 await import("./next.js")
 
 describe('Iterator.range', () => {
@@ -64,5 +65,35 @@ describe('Uint8Array', () => {
     it('returns the expected array', () => {
       expect(Uint8Array.fromHex('48656c6c6f20576f726c64=')).toStrictEqual(array)
     })
+  })
+})
+
+describe('Math.clamp', () => {
+  it('inside the range, returns the value', () => {
+    expect(Math.clamp(5, 0, 10)).toStrictEqual(5)
+  })
+
+  it('below the minimum, returns the minimum', () => {
+    expect(Math.clamp(-5, 0, 10)).toStrictEqual(0)
+  })
+
+  it('above the maximum, returns the maximum', () => {
+    expect(Math.clamp(15, 0, 10)).toStrictEqual(10)
+  })
+
+  it('at the minimum, returns the minimum', () => {
+    expect(Math.clamp(0, 0, 10)).toStrictEqual(0)
+  })
+
+  it('at the maximum, returns the maximum', () => {
+    expect(Math.clamp(0, 0, 10)).toStrictEqual(0)
+  })
+
+  it('works with floating point numbers', () => {
+    expect(Math.clamp(-0.1, 0.0, 1.0)).toStrictEqual(0.0)
+    expect(Math.clamp(1.1, 0.0, 1.0)).toStrictEqual(1.0)
+    expect(Math.clamp(0.5, 0.0, 1.0)).toStrictEqual(0.5)
+    expect(Math.clamp(0.0, 0.0, 1.0)).toStrictEqual(0.0)
+    expect(Math.clamp(1.0, 0.0, 1.0)).toStrictEqual(1.0)
   })
 })

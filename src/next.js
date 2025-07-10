@@ -49,3 +49,10 @@ define(Uint8Array, "fromHex",
     )
   }
 );
+
+// https://github.com/tc39/proposal-math-clamp
+define(Math, "clamp",
+  function clamp(value, minimum, maximum) {
+    return Math.min(Math.max(value, minimum), maximum);
+  }
+);

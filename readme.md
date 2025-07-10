@@ -52,6 +52,7 @@
   - Uint8Array.fromHex
   - Uint8Array.prototype.toBase64 [^base64]
   - Uint8Array.prototype.toHex
+  - Math.clamp
 
 [^browser]: Only polyfills for browser environments.
 [^matchall]: Returns an array as an iterable.
