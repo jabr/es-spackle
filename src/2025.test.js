@@ -8,6 +8,7 @@ delete Set.prototype.isSubsetOf
 delete Set.prototype.isSupersetOf
 delete Set.prototype.isDisjointFrom
 delete Promise.try
+delete RegExp.escape
 await import("./2025.js")
 
 describe('Set.prototype', () => {
@@ -113,5 +114,16 @@ describe('Promise.try', () => {
       resolve(42)
       await p
     })
+  })
+})
+
+describe('RegExp.escape', () => {
+  it('escapes regex characters in a string', () => {
+    expect(RegExp.escape((/\w+/).toString())).toBe('/\\\\w\\+/')
+    expect(
+      RegExp.escape((/^foo\..*?\.bar\[[0-5]\}(ab|cd)$/g).toString())
+    ).toBe(
+      '/\\^foo\\\\\\.\\.\\*\\?\\\\\\.bar\\\\\\[\\[0-5\\]\\\\\\}\\(ab\\|cd\\)\\$/g'
+    )
   })
 })

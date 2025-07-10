@@ -49,11 +49,3 @@ define(Uint8Array, "fromHex",
     )
   }
 );
-
-// https://github.com/tc39/proposal-regex-escaping
-export function regExpEscape(string) {
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions#escaping
-  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
-}
-
-define(RegExp, "escape", regExpEscape);

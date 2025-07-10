@@ -18,7 +18,7 @@ define(Promise, "any",
   }
 );
 
-import { regExpEscape } from './next.js';
+import { regExpEscape } from './2025.js';
 define(String.prototype, "replaceAll",
   function replaceAll(pattern, replacement) {
     if (pattern instanceof RegExp) {

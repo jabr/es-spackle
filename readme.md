@@ -45,13 +45,13 @@
   - Set.prototype.isSupersetOf
   - Set.prototype.isDisjointFrom
   - Promise.try
+  - RegExp.escape
 * ESNext
   - Iterator.range [^range]
   - Uint8Array.fromBase64 [^base64]
   - Uint8Array.fromHex
   - Uint8Array.prototype.toBase64 [^base64]
   - Uint8Array.prototype.toHex
-  - RegExp.escape
 
 [^browser]: Only polyfills for browser environments.
 [^matchall]: Returns an array as an iterable.

@@ -48,3 +48,10 @@ define(Promise, "try",
     return new Promise(resolve => resolve(func()));
   }
 );
+
+export function regExpEscape(string) {
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions#escaping
+  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+}
+
+define(RegExp, "escape", regExpEscape);

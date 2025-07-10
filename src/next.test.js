@@ -5,7 +5,6 @@ Uint8Array.prototype.toBase64 = undefined
 Uint8Array.prototype.toHex = undefined
 Uint8Array.fromBase64 = undefined
 Uint8Array.fromHex = undefined
-delete RegExp.escape
 await import("./next.js")
 
 describe('Iterator.range', () => {
@@ -65,16 +64,5 @@ describe('Uint8Array', () => {
     it('returns the expected array', () => {
       expect(Uint8Array.fromHex('48656c6c6f20576f726c64=')).toStrictEqual(array)
     })
-  })
-})
-
-describe('RegExp.escape', () => {
-  it('escapes regex characters in a string', () => {
-    expect(RegExp.escape((/\w+/).toString())).toBe('/\\\\w\\+/')
-    expect(
-      RegExp.escape((/^foo\..*?\.bar\[[0-5]\}(ab|cd)$/g).toString())
-    ).toBe(
-      '/\\^foo\\\\\\.\\.\\*\\?\\\\\\.bar\\\\\\[\\[0-5\\]\\\\\\}\\(ab\\|cd\\)\\$/g'
-    )
   })
 })
