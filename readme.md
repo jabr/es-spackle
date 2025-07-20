@@ -49,6 +49,8 @@
   - Iterator.from
 * ESNext
   - Iterator.range [^range]
+  - Iterator.zip [^mode]
+  - Iterator.zipKeyed [^mode]
   - Uint8Array.fromBase64 [^base64]
   - Uint8Array.fromHex
   - Uint8Array.prototype.toBase64 [^base64]
@@ -58,13 +60,14 @@
 [^browser]: Only polyfills for browser environments.
 [^matchall]: Returns an array as an iterable.
 [^range]: Options parameter and inclusive setting are not yet implemented.
+[^mode]: Only default "shortest" mode is currently supported.
 [^base64]: Options for base64 alphabet and overflow handling are not yet implemented.
 [^aggerror]: Throws an Error (not an AggregateError) but it has the aggregate errors property.
 [^bigint]: Polyfills are not yet supported on BigInt typed arrays.
 
 ## Build
 
-Run `just dist` to create `dist/all.js` _(currently 4.3k uncompressed)_. It requires [esbuild](https://esbuild.github.io/) and also generates the sourcemap at `dist/all.js.map`.
+Run `just dist` to create `dist/all.js` _(currently 4.8k uncompressed)_. It requires [esbuild](https://esbuild.github.io/) and also generates the sourcemap at `dist/all.js.map`.
 
 If you don't have [just](https://just.systems/man/en/packages.html) installed, the `esbuild` command is:
 

@@ -1,7 +1,9 @@
 import { define, globalIterator } from "./utils.js";
 
+const gIterator = globalIterator();
+
 // https://github.com/tc39/proposal-iterator.range
-define(globalIterator(), "range",
+define(gIterator, "range",
   // @todo: support "inclusive" option
   function *range(start, end = undefined, step = 1) {
     if (end === undefined) {
@@ -11,6 +13,42 @@ define(globalIterator(), "range",
     while ((step < 0 && start > end) || (step > 0 && start < end)) {
       yield start
       start += step
+    }
+  }
+);
+
+// https://github.com/tc39/proposal-joint-iteration
+import { iteratorFrom } from './2025.js';
+define(gIterator, "zip",
+  function* zip(sources) {
+    const iterators = sources.map(iteratorFrom);
+    while (true) {
+      const tuple = [];
+      for (const it of iterators) {
+        const n = it.next();
+        // @todo: handle mode other than "shortest"
+        if (n.done) { return; }
+        tuple.push(n.value);
+      }
+      yield tuple;
+    }
+  }
+);
+
+define(gIterator, "zipKeyed",
+  function* zipKeyed(sources) {
+    const keyedIterators = Object.entries(sources).map(
+      ([key, iteratorLike]) => [key, iteratorFrom(iteratorLike)]
+    );
+    while (true) {
+      const value = {};
+      for (const [key, it] of keyedIterators) {
+        const n = it.next();
+        // @todo: handle mode other than "shortest"
+        if (n.done) { return; }
+        value[key] = n.value;
+      }
+      yield value;
     }
   }
 );
