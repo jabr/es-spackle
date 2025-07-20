@@ -1,11 +1,7 @@
-import { define, global } from "./utils.js";
+import { define, globalIterator } from "./utils.js";
 
 // https://github.com/tc39/proposal-iterator.range
-if (typeof Iterator === 'undefined') {
-  global().Iterator = {};
-}
-
-define(Iterator, "range",
+define(globalIterator(), "range",
   // @todo: support "inclusive" option
   function *range(start, end = undefined, step = 1) {
     if (end === undefined) {

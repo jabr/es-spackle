@@ -18,6 +18,13 @@ export function global() {
   return globalThis;
 }
 
+export function globalIterator() {
+  if (typeof Iterator === 'undefined') {
+    global().Iterator = {};
+  }
+  return Iterator;
+}
+
 export const typedArrays = [
   Int8Array,
   Uint8Array,

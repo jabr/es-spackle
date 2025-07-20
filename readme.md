@@ -46,6 +46,7 @@
   - Set.prototype.isDisjointFrom
   - Promise.try
   - RegExp.escape
+  - Iterator.from
 * ESNext
   - Iterator.range [^range]
   - Uint8Array.fromBase64 [^base64]

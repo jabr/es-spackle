@@ -1,4 +1,4 @@
-import { define } from "./utils.js";
+import { define, globalIterator } from "./utils.js";
 
 define(Set.prototype, "intersection",
   function intersection(other) {
@@ -55,3 +55,20 @@ export function regExpEscape(string) {
 }
 
 define(RegExp, "escape", regExpEscape);
+
+define(globalIterator(), "from",
+  function *iteratorFrom(iteratorLike) {
+    if (iteratorLike.next) {
+      while (true) {
+        const n = iteratorLike.next.call(iteratorLike);
+        if (n.done) { return; }
+        yield n.value;
+      }
+    }
+
+    // just try iterating on it if we can just iterator on it
+    for (const i of iteratorLike) {
+      yield i;
+    }
+  }
+);

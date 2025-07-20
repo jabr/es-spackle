@@ -9,6 +9,7 @@ delete Set.prototype.isSupersetOf
 delete Set.prototype.isDisjointFrom
 delete Promise.try
 delete RegExp.escape
+delete globalThis.Iterator
 await import("./2025.js")
 
 describe('Set.prototype', () => {
@@ -125,5 +126,30 @@ describe('RegExp.escape', () => {
     ).toBe(
       '/\\^foo\\\\\\.\\.\\*\\?\\\\\\.bar\\\\\\[\\[0-5\\]\\\\\\}\\(ab\\|cd\\)\\$/g'
     )
+  })
+})
+
+describe('Iterator.from', () => {
+  it('turns an array into an iterator', () => {
+    const it = Iterator.from([ 1234, 'aaa', 4.3, {a:true}, 5678 ])
+    expect(it.next()).toEqual({ value: 1234, done: false })
+    expect(it.next()).toEqual({ value: 'aaa', done: false })
+    expect(it.next()).toEqual({ value: 4.3, done: false })
+    expect(it.next()).toEqual({ value: {a:true}, done: false })
+    expect(it.next()).toEqual({ value: 5678, done: false })
+    expect(it.next()).toEqual({ value: undefined, done: true })
+  })
+
+  it('turns an object with a #next function into an iterator', () => {
+    const it = Iterator.from({
+      current: 1,
+      next() {
+        this.current *= 2;
+        return { value: this.current, done: false }
+      }
+    })
+    expect(it.next()).toEqual({ value: 2, done: false })
+    expect(it.next()).toEqual({ value: 4, done: false })
+    expect(it.next()).toEqual({ value: 8, done: false })
   })
 })
